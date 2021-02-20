@@ -13,12 +13,12 @@ public class RPNCalculator
 		while (running) 
 		{
 			System.out.print("Enter operation (use h or ? for help): ");
-			userInput = scanner.next();
+			userInput = scanner.nextLine();
 			inputArr = userInput.split(" ");
 				
-			
 			for (String operation : inputArr)
 			{
+				
 				// checks if user inputed a number, and if so, adds it the stack inside the RPNFunctions class
 				try 
 				{
@@ -81,6 +81,7 @@ public class RPNCalculator
 						break;
 					}
 				}
+
 			}
 		}
 	}
