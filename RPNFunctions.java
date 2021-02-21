@@ -21,9 +21,9 @@ import java.util.Stack;
 public class RPNFunctions 
 {
 	public static Stack<Double> numbers = new Stack<>();
-	public static double firstSelected;
-	public static double secondSelected;
-	public static String[] options = new String[] 
+	private static double topItem;
+	private static double secondItem;
+	private static String[] options = new String[] 
 			{"(any number) Enter any number to add to the stack",
 			"(+) add the top two items",
 			"(*) multiply the top two items",
@@ -47,105 +47,120 @@ public class RPNFunctions
 		numbers.push(number);
 	}
 	
+	public static void clearSelected()
+	{
+		topItem = 0.0;
+		secondItem = 0.0;
+	}
+	
 	public static void addition()
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			secondSelected = numbers.pop();
-			numbers.push(secondSelected + firstSelected);
+			topItem = numbers.pop();
+			secondItem = numbers.pop();
+			numbers.push(secondItem + topItem);
 		} catch (EmptyStackException e) {
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
-			if (firstSelected != 0.0) numbers.push(firstSelected);
+			if (topItem != 0.0) numbers.push(topItem);
 		}
 	}
 	
 	public static void multiply()
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			secondSelected = numbers.pop();
-			numbers.push(secondSelected * firstSelected);
+			topItem = numbers.pop();
+			secondItem = numbers.pop();
+			numbers.push(secondItem * topItem);
 		} catch (EmptyStackException e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
-			if (firstSelected != 0.0) numbers.push(firstSelected);
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
+			if (topItem != 0.0) numbers.push(topItem);
 		}
 	}
 	
 	public static void subtract()
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			secondSelected = numbers.pop();
-			numbers.push(secondSelected - firstSelected);
+			topItem = numbers.pop();
+			secondItem = numbers.pop();
+			numbers.push(topItem - secondItem);
 		} catch (EmptyStackException e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
-			if (firstSelected != 0.0) numbers.push(firstSelected);
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
+			if (topItem != 0.0) numbers.push(topItem);
 		}
 		
 	}
 	
 	public static void divide()
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			secondSelected = numbers.pop();
-			numbers.push(secondSelected / firstSelected);
+			topItem = numbers.pop();
+			secondItem = numbers.pop();
+			numbers.push(secondItem / topItem);
 		} catch (EmptyStackException e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
-			if (firstSelected != 0.0) numbers.push(firstSelected);
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
+			if (topItem != 0.0) numbers.push(topItem);
 		}
 		
 	}
 	
 	public static void modulous()
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			secondSelected = numbers.pop();
-			numbers.push(secondSelected % firstSelected);
+			topItem = numbers.pop();
+			secondItem = numbers.pop();
+			numbers.push(secondItem % topItem);
 		} catch (EmptyStackException e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
-			if (firstSelected != 0.0) numbers.push(firstSelected);
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
+			if (topItem != 0.0) numbers.push(topItem);
 		}
 		
 	}
 	
 	public static void negate() 
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			numbers.push(firstSelected * -1);
+			topItem = numbers.pop();
+			numbers.push(topItem * -1);
 		} catch (EmptyStackException e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
 	}
 	
 	public static void exchange() 
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.pop();
-			secondSelected = numbers.pop();
-			numbers.push(firstSelected);
-			numbers.push(secondSelected);
+			topItem = numbers.pop();
+			secondItem = numbers.pop();
+			numbers.push(topItem);
+			numbers.push(secondItem);
 		} catch (EmptyStackException e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
-			if (firstSelected != 0.0) numbers.push(firstSelected);
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
+			if (topItem != 0.0) numbers.push(topItem);
 		}
 	}
 	
 	public static void duplicate() 
 	{
+		clearSelected();
 		try {
-			firstSelected = numbers.lastElement();
-			numbers.push(firstSelected);
+			topItem = numbers.lastElement();
+			numbers.push(topItem);
 		} catch (Exception e) {
-			System.out.println("(ERROR) - Not Enough Items in Stack");
+			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
 		
 	}
 	
 	public static void printTop() 
 	{
+		clearSelected();
 		try {
 			System.out.println();
 			System.out.println(numbers.lastElement());
@@ -158,6 +173,7 @@ public class RPNFunctions
 	
 	public static void printRemoveTop() 
 	{
+		clearSelected();
 		try {
 			System.out.println();
 			System.out.println(numbers.pop());
@@ -170,14 +186,14 @@ public class RPNFunctions
 	
 	public static void printAll() 
 	{
-		System.out.println();
+		clearSelected();
 		
+		System.out.println();
 		System.out.println("(TOP)");
 		for (int i=numbers.size()-1; i>-1; i--)
 		{
 			System.out.println(numbers.elementAt(i));
 		}
-		
 		System.out.println();
 	}
 	
@@ -189,12 +205,10 @@ public class RPNFunctions
 	public static void help()
 	{
 		System.out.println();
-		
 		for (String option : options)
 		{
 			System.out.println(option);
 		}
-		
 		System.out.println();
 	}
 	

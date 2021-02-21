@@ -7,18 +7,16 @@ public class RPNCalculator
 	{
 		boolean running = true;
 		Scanner scanner = new Scanner(System.in);
-		String userInput;
 		String[] inputArr;
 		
 		while (running) 
 		{
-			System.out.print("Enter operation (use h or ? for help): ");
-			userInput = scanner.nextLine();
-			inputArr = userInput.split(" ");
+			System.out.print("Enter operation(s) seperated by a space (use h or ? for help): ");
+			inputArr = scanner.nextLine().split(" ");
 				
+			// goes through each operation entered by the user and tries to execute it
 			for (String operation : inputArr)
 			{
-				
 				// checks if user inputed a number, and if so, adds it the stack inside the RPNFunctions class
 				try 
 				{
@@ -81,7 +79,6 @@ public class RPNCalculator
 						break;
 					}
 				}
-
 			}
 		}
 	}
