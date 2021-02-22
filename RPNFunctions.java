@@ -47,6 +47,7 @@ public class RPNFunctions
 		numbers.push(number);
 	}
 	
+	// clears topItem and secondItem variable to handle bugs when the Stack size is <2
 	public static void clearSelected()
 	{
 		topItem = 0.0;
@@ -56,7 +57,8 @@ public class RPNFunctions
 	public static void addition()
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem + topItem);
@@ -69,7 +71,8 @@ public class RPNFunctions
 	public static void multiply()
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem * topItem);
@@ -82,7 +85,8 @@ public class RPNFunctions
 	public static void subtract()
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(topItem - secondItem);
@@ -96,7 +100,8 @@ public class RPNFunctions
 	public static void divide()
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem / topItem);
@@ -110,7 +115,8 @@ public class RPNFunctions
 	public static void modulous()
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem % topItem);
@@ -124,7 +130,8 @@ public class RPNFunctions
 	public static void negate() 
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			numbers.push(topItem * -1);
 		} catch (EmptyStackException e) {
@@ -135,7 +142,8 @@ public class RPNFunctions
 	public static void exchange() 
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(topItem);
@@ -149,7 +157,8 @@ public class RPNFunctions
 	public static void duplicate() 
 	{
 		clearSelected();
-		try {
+		try 
+		{
 			topItem = numbers.lastElement();
 			numbers.push(topItem);
 		} catch (Exception e) {
@@ -161,10 +170,9 @@ public class RPNFunctions
 	public static void printTop() 
 	{
 		clearSelected();
-		try {
-			System.out.println();
-			System.out.println(numbers.lastElement());
-			System.out.println();
+		try 
+		{
+			System.out.printf("\n%d\n", numbers.lastElement());
 		} catch (NoSuchElementException e) {
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
@@ -174,10 +182,9 @@ public class RPNFunctions
 	public static void printRemoveTop() 
 	{
 		clearSelected();
-		try {
-			System.out.println();
-			System.out.println(numbers.pop());
-			System.out.println();
+		try 
+		{
+			System.out.printf("\n%f\n", numbers.pop());
 		} catch (EmptyStackException e) {
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
@@ -188,8 +195,7 @@ public class RPNFunctions
 	{
 		clearSelected();
 		
-		System.out.println();
-		System.out.println("(TOP)");
+		System.out.println("\n(TOP)");
 		for (int i=numbers.size()-1; i>-1; i--)
 		{
 			System.out.println(numbers.elementAt(i));
