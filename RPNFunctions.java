@@ -20,7 +20,6 @@ import java.util.Stack;
 
 public class RPNFunctions 
 {
-	public static Stack<Double> numbers = new Stack<>();
 	private static double topItem;
 	private static double secondItem;
 	private static String[] options = new String[] 
@@ -42,7 +41,7 @@ public class RPNFunctions
 			};
 	
 	
-	public static void addToStack(double number)
+	public static void addToStack(Stack<Double> numbers, double number)
 	{
 		numbers.push(number);
 	}
@@ -54,7 +53,7 @@ public class RPNFunctions
 		secondItem = 0.0;
 	}
 	
-	public static void addition()
+	public static void addition(Stack<Double> numbers)
 	{
 		clearSelected();
 		try 
@@ -68,7 +67,7 @@ public class RPNFunctions
 		}
 	}
 	
-	public static void multiply()
+	public static void multiply(Stack<Double> numbers)
 	{
 		clearSelected();
 		try 
@@ -82,7 +81,7 @@ public class RPNFunctions
 		}
 	}
 	
-	public static void subtract()
+	public static void subtract(Stack<Double> numbers)
 	{
 		clearSelected();
 		try 
@@ -97,7 +96,7 @@ public class RPNFunctions
 		
 	}
 	
-	public static void divide()
+	public static void divide(Stack<Double> numbers)
 	{
 		clearSelected();
 		try 
@@ -112,7 +111,7 @@ public class RPNFunctions
 		
 	}
 	
-	public static void modulous()
+	public static void modulous(Stack<Double> numbers)
 	{
 		clearSelected();
 		try 
@@ -127,7 +126,7 @@ public class RPNFunctions
 		
 	}
 	
-	public static void negate() 
+	public static void negate(Stack<Double> numbers) 
 	{
 		clearSelected();
 		try 
@@ -139,7 +138,7 @@ public class RPNFunctions
 		}
 	}
 	
-	public static void exchange() 
+	public static void exchange(Stack<Double> numbers) 
 	{
 		clearSelected();
 		try 
@@ -154,7 +153,7 @@ public class RPNFunctions
 		}
 	}
 	
-	public static void duplicate() 
+	public static void duplicate(Stack<Double> numbers) 
 	{
 		clearSelected();
 		try 
@@ -167,7 +166,7 @@ public class RPNFunctions
 		
 	}
 	
-	public static void printTop() 
+	public static void printTop(Stack<Double> numbers) 
 	{
 		clearSelected();
 		try 
@@ -179,7 +178,7 @@ public class RPNFunctions
 		
 	}
 	
-	public static void printRemoveTop() 
+	public static void printRemoveTop(Stack<Double> numbers) 
 	{
 		clearSelected();
 		try 
@@ -191,7 +190,7 @@ public class RPNFunctions
 		
 	}
 	
-	public static void printAll() 
+	public static void printAll(Stack<Double> numbers) 
 	{
 		clearSelected();
 		
@@ -203,7 +202,7 @@ public class RPNFunctions
 		System.out.println();
 	}
 	
-	public static void clear() 
+	public static void clear(Stack<Double> numbers) 
 	{
 		numbers.clear();
 	}
@@ -218,7 +217,7 @@ public class RPNFunctions
 		System.out.println();
 	}
 	
-	public static int getStackSize()
+	public static int getStackSize(Stack<Double> numbers)
 	{
 		return numbers.size();
 	}

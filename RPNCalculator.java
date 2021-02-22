@@ -1,67 +1,65 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class RPNCalculator 
 {
 
 	public static void main(String[] args) 
 	{
-		boolean running = true;
+		Stack<Double> numberStack = new Stack<>();
 		Scanner scanner = new Scanner(System.in);
-		String[] inputArr;
+		boolean running = true;
 		
 		while (running) 
 		{
 			System.out.print("Enter operation(s) seperated by a space (use h or ? for help): ");
-			inputArr = scanner.nextLine().split(" ");
-				
 			// goes through each operation entered by the user and tries to execute it
-			for (String operation : inputArr)
+			for (String operation : scanner.nextLine().split(" "))
 			{
-				// checks if user inputed a number, and if so, adds it the stack inside the RPNFunctions class
+				// checks if user inputed a number, and if so, it is added to the stack
 				try 
 				{
-					double num = Double.parseDouble(operation);
-					RPNFunctions.addToStack(num);
+					RPNFunctions.addToStack(numberStack, Double.parseDouble(operation));
 				// if user did not input a number, checks to see if it is a defined function
 				} catch (NumberFormatException e) 
 				{
 					switch (operation) 
 					{
 					case "+":
-						RPNFunctions.addition();
+						RPNFunctions.addition(numberStack);
 						break;
 					case "*":
-						RPNFunctions.multiply();
+						RPNFunctions.multiply(numberStack);
 						break;
 					case "-":
-						RPNFunctions.subtract();
+						RPNFunctions.subtract(numberStack);
 						break;
 					case "/":
-						RPNFunctions.divide();
+						RPNFunctions.divide(numberStack);
 						break;
 					case "%":
-						RPNFunctions.modulous();
+						RPNFunctions.modulous(numberStack);
 						break;
 					case "m":
-						RPNFunctions.negate();
+						RPNFunctions.negate(numberStack);
 						break;
 					case "r":
-						RPNFunctions.exchange();
+						RPNFunctions.exchange(numberStack);
 						break;
 					case "d":
-						RPNFunctions.duplicate();
+						RPNFunctions.duplicate(numberStack);
 						break;
 					case "p":
-						RPNFunctions.printTop();
+						RPNFunctions.printTop(numberStack);
 						break;
 					case "n":
-						RPNFunctions.printRemoveTop();
+						RPNFunctions.printRemoveTop(numberStack);
 						break;
 					case "f":
-						RPNFunctions.printAll();
+						RPNFunctions.printAll(numberStack);
 						break;
 					case "c":
-						RPNFunctions.clear();
+						RPNFunctions.clear(numberStack);
 						break;
 					case "q":
 						System.out.println("Quitting");
