@@ -2,22 +2,6 @@ import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-/* + add the top two items
- * * multiply the top two items
- * - subtract the top item from the next item
- * / integer divide the second item by the top item 
- * % find the integer remainder when dividing the second item by the top item 
- * m unary minus -- negate the top item
- * r exchange the top two items 
- * d duplicate top item on stack 
- * p print the top item 
- * n print and remove the top item 
- * f print all the contents of the stack (leaving it intact) 
- * c clear the stack 
- * q quit 
- * h (or ?) print a help message 
- */
-
 public class RPNFunctions 
 {
 	private static double topItem;
@@ -43,10 +27,10 @@ public class RPNFunctions
 	
 	public static void addToStack(Stack<Double> numbers, double number)
 	{
-		numbers.push(number);
+		numbers.push(number); 
 	}
 	
-	// clears topItem and secondItem variable to handle bugs when the Stack size is <2
+	// clears local variables topItem and secondItem to handle bugs when the Stack size is < 2 
 	public static void clearSelected()
 	{
 		topItem = 0.0;
@@ -61,7 +45,8 @@ public class RPNFunctions
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem + topItem);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 			if (topItem != 0.0) numbers.push(topItem);
 		}
@@ -75,7 +60,8 @@ public class RPNFunctions
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem * topItem);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 			if (topItem != 0.0) numbers.push(topItem);
 		}
@@ -89,7 +75,8 @@ public class RPNFunctions
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(topItem - secondItem);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 			if (topItem != 0.0) numbers.push(topItem);
 		}
@@ -104,7 +91,8 @@ public class RPNFunctions
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem / topItem);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 			if (topItem != 0.0) numbers.push(topItem);
 		}
@@ -119,7 +107,8 @@ public class RPNFunctions
 			topItem = numbers.pop();
 			secondItem = numbers.pop();
 			numbers.push(secondItem % topItem);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 			if (topItem != 0.0) numbers.push(topItem);
 		}
@@ -133,7 +122,8 @@ public class RPNFunctions
 		{
 			topItem = numbers.pop();
 			numbers.push(topItem * -1);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
 	}
@@ -147,7 +137,8 @@ public class RPNFunctions
 			secondItem = numbers.pop();
 			numbers.push(topItem);
 			numbers.push(secondItem);
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 			if (topItem != 0.0) numbers.push(topItem);
 		}
@@ -160,7 +151,8 @@ public class RPNFunctions
 		{
 			topItem = numbers.lastElement();
 			numbers.push(topItem);
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
 		
@@ -172,7 +164,8 @@ public class RPNFunctions
 		try 
 		{
 			System.out.printf("\n%d\n", numbers.lastElement());
-		} catch (NoSuchElementException e) {
+		} catch (NoSuchElementException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
 		
@@ -184,7 +177,8 @@ public class RPNFunctions
 		try 
 		{
 			System.out.printf("\n%f\n", numbers.pop());
-		} catch (EmptyStackException e) {
+		} catch (EmptyStackException e) 
+		{
 			System.out.println("(ERROR) - Not Enough Items in Stack\n\n");
 		}
 		
@@ -215,10 +209,5 @@ public class RPNFunctions
 			System.out.println(option);
 		}
 		System.out.println();
-	}
-	
-	public static int getStackSize(Stack<Double> numbers)
-	{
-		return numbers.size();
 	}
 }
