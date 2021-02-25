@@ -1,30 +1,23 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class RPNCalculator 
-{
+public class RPNCalculator {
 
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
 		Stack<Double> numberStack = new Stack<>();
 		Scanner scanner = new Scanner(System.in);
 		boolean running = true;
-		
-		while (running) 
-		{
+
+		while (running) {
 			System.out.print("Enter operation(s) seperated by a space (use h or ? for help): ");
 			// goes through each operation entered by the user and tries to execute it
-			for (String operation : scanner.nextLine().split(" "))
-			{
+			for (String operation : scanner.nextLine().split(" ")) {
 				// checks if user inputed a number, and if so, it is added to the stack
-				try 
-				{
+				try {
 					RPNFunctions.addToStack(numberStack, Double.parseDouble(operation));
-				// if user did not input a number, checks to see if it is a defined function
-				} catch (NumberFormatException e) 
-				{
-					switch (operation) 
-					{
+					// if user did not input a number, checks to see if it is a defined function
+				} catch (NumberFormatException e) {
+					switch (operation) {
 					case "+":
 						RPNFunctions.addition(numberStack);
 						break;
