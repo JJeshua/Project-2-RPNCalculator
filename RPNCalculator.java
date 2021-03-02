@@ -1,4 +1,5 @@
 package com.company;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Stack;
@@ -33,59 +34,59 @@ public class RPNCalculator {
                                 RPNFunctions.multiply(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
-                        }
+                            }
                             break;
                         case "-":
-                            try{
+                            try {
                                 RPNFunctions.subtract(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "/":
-                            try{
+                            try {
                                 RPNFunctions.divide(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "%":
-                            try{
+                            try {
                                 RPNFunctions.modulous(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "m":
-                            try{
+                            try {
                                 RPNFunctions.negate(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "r":
-                            try{
+                            try {
                                 RPNFunctions.exchange(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "d":
-                            try{
+                            try {
                                 RPNFunctions.duplicate(numberStack);
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "p":
-                            try{
-                                System.out.printf("(TOP)\n%f\n\n\n",RPNFunctions.getTop(numberStack));
+                            try {
+                                System.out.printf("(TOP)\n%f\n\n\n", RPNFunctions.getTop(numberStack));
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
                             }
                             break;
                         case "n":
-                            try{
+                            try {
                                 System.out.printf("(TOP)\n%f\n\n\n", RPNFunctions.getRemoveTop(numberStack));
                             } catch (NoSuchElementException exception) {
                                 System.out.println(notEnoughItemsMessage);
@@ -93,11 +94,15 @@ public class RPNCalculator {
                             break;
                         /* Prints all the numbers in numberStack to the console */
                         case "f":
-                            System.out.println("(TOP)");
-                            for (Double number : numberStack) {
-                                System.out.println(number);
+                            if (numberStack.size() < 1) {
+                                System.out.println(notEnoughItemsMessage);
+                            } else {
+                                System.out.println("(TOP)");
+                                for (Double number : numberStack) {
+                                    System.out.println(number);
+                                }
+                                System.out.println("\n");
                             }
-                            System.out.println("\n");
                             break;
                         case "c":
                             RPNFunctions.clear(numberStack);
@@ -109,12 +114,12 @@ public class RPNCalculator {
                             scanner.close();
                             break;
                         case "h":
-                            for (String option: RPNFunctions.getHelpOptions()) {
+                            for (String option : RPNFunctions.getHelpOptions()) {
                                 System.out.println(option);
                             }
                             break;
                         case "?":
-                            for (String option: RPNFunctions.getHelpOptions()) {
+                            for (String option : RPNFunctions.getHelpOptions()) {
                                 System.out.println(option);
                             }
                             break;

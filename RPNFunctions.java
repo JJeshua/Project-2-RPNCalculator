@@ -6,14 +6,14 @@ import java.util.Stack;
 public class RPNFunctions {
     private static double topItem;
     private static double secondItem;
-    private static String[] options = new String[] { "(any number) Enter any number to add to the stack",
+    private static final String[] options = new String[]{"(any number) Enter any number to add to the stack",
             "(+) add the top two items", "(*) multiply the top two items",
             "(-) subtract the top item from the next item", "(/) integer divide the second item by the top item",
             "(%) find the integer remainder when dividing the second item by the top item",
             "(m) unary minus -- negate the top item", "(r) exchange the top two items",
             "(d) duplicate top item on the stack ", "(p) print the top item ", "(n) print and remove the top item ",
             "(f) print all the contents of the stack (leaving it intact) ", "(c) clear the stack ", "(q) quit ",
-            "(h or ?) help " };
+            "(h or ?) help "};
 
     public static void addToStack(Stack<Double> numbers, double number) {
         numbers.push(number);
